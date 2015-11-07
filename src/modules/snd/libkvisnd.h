@@ -166,7 +166,7 @@ protected:
 protected:
 	void stopAllSoundThreads();
 	void cleanupAfterLastPlayerEntry();
-#ifdef COMPILE_PHONON_SUPPORT
+#ifdef COMPILE_PHONON_SUPPORT && QT_VERSION < 0x050000
 	bool playPhonon(const QString &szFileName);
 	void cleanupPhonon();
 #endif //!COMPILE_PHONON_SUPPORT

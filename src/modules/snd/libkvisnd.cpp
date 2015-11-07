@@ -254,7 +254,7 @@ void KviSoundPlayer::detectSoundSystem()
 #endif
 }
 
-#ifdef COMPILE_PHONON_SUPPORT
+#ifdef COMPILE_PHONON_SUPPORT && QT_VERSION < 0x050000
 bool KviSoundPlayer::playPhonon(const QString &szFileName)
 {
 	if(isMuted())
