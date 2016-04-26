@@ -39,9 +39,11 @@ with the interpreter code as FIRST parameter and the other parameters
 of the command following.
 the help page for perl.begin is in the perl module
 the help page for python.begin is in the python module
+the help page for ruby.begin is in the ruby module
 
 perl.begin(context) <perl code> perl.end
 python.begin <python code> python.end
+ruby.begin <ruby code> ruby.end
 */
 #define IMPLEMENT_EXTERNAL_INTERPRETER_BEGIN(__name) \
 	KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommand##__name##Begin() \
@@ -88,7 +90,8 @@ python.begin <python code> python.end
 		const QChar * pInterpreterEnd; \
 		for(;;) \
 		{ \
-			while(KVSP_curCharUnicode && (KVSP_curCharUnicode != 'p') && (KVSP_curCharUnicode != 'P')) \
+			while(KVSP_curCharUnicode && (KVSP_curCharUnicode != 'p') && (KVSP_curCharUnicode != 'P') && \
+				(KVSP_curCharUnicode != 'r') && (KVSP_curCharUnicode != 'R')) \
 				KVSP_skipChar; \
 			if(KVSP_curCharIsEndOfBuffer) \
 			{ \
@@ -126,6 +129,7 @@ python.begin <python code> python.end
 
 IMPLEMENT_EXTERNAL_INTERPRETER_BEGIN(Perl)
 IMPLEMENT_EXTERNAL_INTERPRETER_BEGIN(Python)
+IMPLEMENT_EXTERNAL_INTERPRETER_BEGIN(Ruby)
 
 KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandBreak()
 {

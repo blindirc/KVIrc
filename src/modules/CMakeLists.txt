@@ -37,7 +37,7 @@ subdirs(
 	notifier
 	objects options
 	package perlcore popup popupeditor proxydb pythoncore
-	raweditor regchan reguser rijndael rot13
+	raweditor regchan reguser rijndael rot13 rubycore
 	serverdb setup sharedfile sharedfileswindow snd socketspy spaste str system
 	texticons term theme tip tmphighlight toolbar toolbareditor torrent trayicon
 	upnp url userlist
@@ -50,6 +50,10 @@ endif()
 
 if(COMPILE_PYTHON_SUPPORT)
 	subdirs(python)
+endif()
+
+if(COMPILE_RUBY_SUPPORT)
+	subdirs(ruby)
 endif()
 
 if(COMPILE_ENCHANT_SUPPORT)

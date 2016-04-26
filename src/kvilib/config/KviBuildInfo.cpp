@@ -86,6 +86,9 @@ const char * feature_array[]=
 #ifdef COMPILE_PYTHON_SUPPORT
 	"Python",
 #endif
+#ifdef COMPILE_RUBY_SUPPORT
+	"Ruby",
+#endif
 #ifdef COMPILE_ENCHANT_SUPPORT
 	"Enchant",
 #endif

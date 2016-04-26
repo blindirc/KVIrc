@@ -793,6 +793,23 @@ else()
 	set(CMAKE_STATUS_PYTHON_SUPPORT "No")
 endif()
 
+# Check for Ruby support
+option(WANT_RUBY "Compile Ruby support" ON)
+if(WANT_RUBY)
+	find_package(Ruby)
+	if(RUBY_FOUND)
+		set(COMPILE_RUBY_SUPPORT 1)
+		set(CMAKE_STATUS_RUBY_SUPPORT "Yes")
+		list(APPEND LIBS ${RUBY_LIBRARY})
+		set(RUBY_INCLUDE_DIRS "D:/usr/include/ruby-2.4.0;D:/usr/include/ruby-2.4.0/i386-mswin32_120")
+		include_directories(${RUBY_INCLUDE_DIRS})
+	else()
+		set(CMAKE_STATUS_RUBY_SUPPORT "No, not found.")
+	endif()
+else()
+	set(CMAKE_STATUS_RUBY_SUPPORT "No")
+endif()
+
 ############################################################################
 # Enchant (spell checker) support
 ############################################################################
@@ -1363,6 +1380,9 @@ message(STATUS "   OpenSSL support             : ${CMAKE_STATUS_SSL_SUPPORT}")
 message(STATUS "Scripting:")
 message(STATUS "   Perl support                : ${CMAKE_STATUS_PERL_SUPPORT}")
 message(STATUS "   Python support              : ${CMAKE_STATUS_PYTHON_SUPPORT}")
+message(STATUS "   Ruby support                : ${CMAKE_STATUS_RUBY_SUPPORT}")
+message(STATUS "   Ruby include dirs           : ${RUBY_INCLUDE_DIRS}")
+message(STATUS "   Ruby library                : ${RUBY_LIBRARY}")
 message(STATUS "DCC Features:")
 #message(STATUS "   DCC Canvas Support          : ${CMAKE_STATUS_DCC_CANVAS_SUPPORT}")
 message(STATUS "   DCC voice support           : ${CMAKE_STATUS_DCC_VOICE_SUPPORT}")

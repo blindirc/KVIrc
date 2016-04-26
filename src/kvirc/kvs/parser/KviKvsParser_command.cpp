@@ -132,19 +132,18 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 		// parsing routine
 		if((iIdentifierLen == 4) || (iIdentifierLen == 6))
 		{
-			if(pIdentifier->toLower().unicode() == 'p')
+			if(pIdentifier->toLower().unicode() == 'p' || pIdentifier->toLower().unicode() == 'r')
 			{
 				// Set the interpreter name
 				QString szInterpreter;
 				if(KviQString::equalCI(szIdentifier,"perl"))
-				{
 					szInterpreter = "perl";
-				} else if(KviQString::equalCI(szIdentifier,"python"))
-				{
+				else if(KviQString::equalCI(szIdentifier,"python"))
 					szInterpreter = "python";
-				}
+				else if(KviQString::equalCI(szIdentifier,"ruby"))
+					szInterpreter = "ruby";
 
-				if((szInterpreter == "perl") || (szInterpreter == "python"))
+				if((szInterpreter == "perl") || (szInterpreter == "python") || (szInterpreter == "ruby"))
 				{
 					if(pSecondPart)
 					{
@@ -159,6 +158,10 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 							{
 								// yep, that's python.begin
 								cmd = parseSpecialCommandPythonBegin();
+							} else if (szInterpreter == "ruby")
+							{
+								// yep, that's ruby.begin
+								cmd = parseSpecialCommandRubyBegin();
 							}
 
 							if(!cmd)
