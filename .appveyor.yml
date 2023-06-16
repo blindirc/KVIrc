@@ -16,16 +16,17 @@ environment:
           mingw_root: c:/msys64/mingw64
           mingw_libgcc: libgcc_s_seh-1.dll
 
-        - cmake_build_type: Release
-          arch: x86
-          target_arch: x86
-          vc_arch: amd64_x86  # cross-compile from amd64 to x86
-          choco_arch: --x86
-          qt_ver: 5.9\msvc2015 # no official Qt VS2017 32bit, use VS2015(ABI compatible, answer from Qt)
-          MSYSTEM: MINGW32
-          mingw_fourple: mingw32/mingw-w64-i686
-          mingw_root: c:/msys64/mingw32
-          mingw_libgcc: libgcc_s_dw2-1.dll
+        # Not supported on 32 bit windows
+        # - cmake_build_type: Release
+        #   arch: x86
+        #   target_arch: x86
+        #   vc_arch: amd64_x86  # cross-compile from amd64 to x86
+        #   choco_arch: --x86
+        #   qt_ver: 5.9\msvc2015 # no official Qt VS2017 32bit, use VS2015(ABI compatible, answer from Qt)
+        #   MSYSTEM: MINGW32
+        #   mingw_fourple: mingw32/mingw-w64-i686
+        #   mingw_root: c:/msys64/mingw32
+        #   mingw_libgcc: libgcc_s_dw2-1.dll
 
         - cmake_build_type: Debug
           arch: x64
@@ -38,16 +39,17 @@ environment:
           mingw_root: c:/msys64/mingw64
           mingw_libgcc: libgcc_s_seh-1.dll
 
-        - cmake_build_type: Debug
-          arch: x86
-          target_arch: x86
-          vc_arch: amd64_x86  # cross-compile from amd64 to x86
-          choco_arch: --x86
-          qt_ver: 5.9\msvc2015 # no official Qt VS2017 32bit, use VS2015(ABI compatible, answer from Qt)
-          MSYSTEM: MINGW32
-          mingw_fourple: mingw32/mingw-w64-i686
-          mingw_root: c:/msys64/mingw32
-          mingw_libgcc: libgcc_s_dw2-1.dll
+        # Not supported on 32 bit windows
+        # - cmake_build_type: Debug
+        #   arch: x86
+        #   target_arch: x86
+        #   vc_arch: amd64_x86  # cross-compile from amd64 to x86
+        #   choco_arch: --x86
+        #   qt_ver: 5.9\msvc2015 # no official Qt VS2017 32bit, use VS2015(ABI compatible, answer from Qt)
+        #   MSYSTEM: MINGW32
+        #   mingw_fourple: mingw32/mingw-w64-i686
+        #   mingw_root: c:/msys64/mingw32
+        #   mingw_libgcc: libgcc_s_dw2-1.dll
 matrix:
     fast_finish: true
 install:
